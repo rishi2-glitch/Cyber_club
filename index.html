@@ -32,32 +32,8 @@
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none;
+    cursor: default;
   }
-
-  /* CUSTOM CURSOR */
-  .cursor {
-    width: 12px; height: 12px;
-    background: var(--green);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s, width 0.2s, height 0.2s, opacity 0.2s;
-    mix-blend-mode: screen;
-  }
-  /*
-  .cursor-ring {
-    width: 32px; height: 32px;
-    border: 1px solid rgba(0,255,136,0.5);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
-  }
-  body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 20px; height: 20px; }
-  body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 50px; height: 50px; border-color: var(--green); } */
 
   /* GRID BACKGROUND */
   body::before {
@@ -110,13 +86,13 @@
     text-decoration: none;
     letter-spacing: 0.1em;
     transition: color 0.2s;
-    cursor: none;
+    cursor: pointer;
   }
   .nav-links a:hover { color: var(--green); }
   .nav-dot { display: flex; gap: 6px; align-items: center; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); transition: all 0.3s; }
   .dot.active { background: var(--green); box-shadow: 0 0 8px var(--green); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; background: none; border: none; padding: 4px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--green); transition: all 0.3s; }
 
   /* HERO */
@@ -192,7 +168,7 @@
     font-family: var(--mono);
     font-size: 0.75rem;
     letter-spacing: 0.15em;
-    border: none; cursor: none;
+    border: none; cursor: pointer;
     text-decoration: none;
     display: inline-flex; align-items: center; gap: 0.5rem;
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
@@ -208,7 +184,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     border: 1px solid var(--green);
-    cursor: none;
+    cursor: pointer;
     text-decoration: none;
     display: inline-flex; align-items: center; gap: 0.5rem;
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
@@ -216,7 +192,6 @@
   }
   .btn-secondary:hover { background: rgba(0,255,136,0.08); transform: translateY(-2px); }
 
-  /* GLITCH DECORATION */
   .hero-glitch {
     position: absolute; right: 5%; top: 50%;
     transform: translateY(-50%);
@@ -297,7 +272,7 @@
   }
   .what-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
 
-  /* OPEN POSITIONS */
+  /* POSITIONS */
   #positions { background: var(--dark); }
   .positions-grid {
     display: grid;
@@ -311,7 +286,7 @@
     display: flex; align-items: center; justify-content: space-between;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
     transition: all 0.25s;
-    cursor: none;
+    cursor: pointer;
   }
   .position-card:hover {
     border-color: var(--green);
@@ -370,33 +345,13 @@
     overflow: hidden;
   }
   .team-card:hover .team-avatar { border-color: var(--green); box-shadow: 0 0 20px rgba(0,255,136,0.2); }
-  .team-name {
-    font-family: var(--body);
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text);
-    margin-bottom: 0.25rem;
-  }
-  .team-role {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--green);
-    letter-spacing: 0.12em;
-  }
-  .team-branch {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: var(--muted);
-    margin-top: 0.25rem;
-  }
+  .team-name { font-family: var(--body); font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 0.25rem; }
+  .team-role { font-family: var(--mono); font-size: 0.65rem; color: var(--green); letter-spacing: 0.12em; }
+  .team-branch { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); margin-top: 0.25rem; }
 
-  /* HOW TO JOIN */
+  /* JOIN */
   #join { background: var(--dark); }
-  .join-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem; align-items: start;
-  }
+  .join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
   .join-steps { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
   .join-step {
     display: flex; gap: 1.2rem; align-items: flex-start;
@@ -407,24 +362,10 @@
     transition: border-color 0.2s;
   }
   .join-step:hover { border-color: var(--green); }
-  .step-num {
-    font-family: var(--display);
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: rgba(0,255,136,0.2);
-    line-height: 1;
-    flex-shrink: 0;
-    width: 40px;
-  }
-  .step-content h4 {
-    font-family: var(--display);
-    font-size: 0.75rem;
-    color: var(--green);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.3rem;
-  }
+  .step-num { font-family: var(--display); font-size: 1.5rem; font-weight: 900; color: rgba(0,255,136,0.2); line-height: 1; flex-shrink: 0; width: 40px; }
+  .step-content h4 { font-family: var(--display); font-size: 0.75rem; color: var(--green); letter-spacing: 0.1em; margin-bottom: 0.3rem; }
   .step-content p { font-size: 0.9rem; color: var(--muted); }
-  .step-content a { color: var(--green); text-decoration: none; }
+  .step-content a { color: var(--green); text-decoration: none; cursor: pointer; }
 
   /* CONTACT FORM */
   .contact-box {
@@ -433,25 +374,10 @@
     background: var(--dark2);
     clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
   }
-  .contact-box h3 {
-    font-family: var(--display);
-    font-size: 0.8rem;
-    color: var(--green);
-    letter-spacing: 0.15em;
-    margin-bottom: 1.5rem;
-  }
+  .contact-box h3 { font-family: var(--display); font-size: 0.8rem; color: var(--green); letter-spacing: 0.15em; margin-bottom: 1.5rem; }
   .form-group { margin-bottom: 1rem; }
-  .form-group label {
-    display: block;
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.4rem;
-  }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
+  .form-group label { display: block; font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
     width: 100%;
     padding: 0.7rem 1rem;
     background: var(--dark);
@@ -461,523 +387,19 @@
     font-size: 0.8rem;
     outline: none;
     resize: none;
+    cursor: text;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
     transition: border-color 0.2s;
-    cursor: none;
-    -webkit-appearance: none;
-    appearance: none;
   }
-  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2300ff88'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 2rem; }
-  .form-group select option { background: #0d1410; }
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus { border-color: var(--green); }
+  .form-group select { 
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2300ff88'/%3E%3C/svg%3E"); 
+    background-repeat: no-repeat; 
+    background-position: right 12px center; 
+    padding-right: 2rem;
+    -webkit-appearance: none; appearance: none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--green); }
   .form-group textarea { height: 100px; }
-  .form-note {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: var(--muted);
-    margin-bottom: 1.2rem;
-    letter-spacing: 0.08em;
-  }
-  .form-success {
-    display: none;
-    padding: 1rem;
-    border: 1px solid var(--green);
-    background: rgba(0,255,136,0.05);
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--green);
-    margin-top: 1rem;
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
-  }
-
-  /* STATS TICKER */
-  .ticker-bar {
-    background: var(--dark3);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-    padding: 0.8rem 0;
-  }
-  .ticker-inner {
-    display: flex; gap: 4rem;
-    animation: ticker 20s linear infinite;
-    white-space: nowrap;
-    width: max-content;
-  }
-  .ticker-item {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .ticker-item .ti-val { color: var(--green); }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-  /* FOOTER */
-  footer {
-    background: var(--dark2);
-    border-top: 1px solid var(--border);
-    padding: 2rem 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .footer-brand {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-  }
-  .footer-brand .fb-green { color: var(--green); }
-  .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    cursor: none;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--green); }
-  .footer-status {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-  }
-  .status-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 8px var(--green);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--green); }
-    50% { opacity: 0.5; box-shadow: 0 0 3px var(--green); }
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* MOBILE NAV */
-  .mobile-menu {
-    display: none;
-    position: fixed; inset: 0; top: 60px;
-    background: rgba(8,12,10,0.97);
-    z-index: 99;
-    flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 2rem;
-    backdrop-filter: blur(10px);
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    font-family: var(--display);
-    font-size: 1.2rem;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: 0.15em;
-    cursor: none;
-    transition: color 0.2s;
-  }
-  .mobile-menu a:hover { color: var(--green); }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    #hero { padding: 5rem 1.5rem 3rem; }
-    section { padding: 3.5rem 1.5rem; }
-    .join-grid { grid-template-columns: 1fr; }
-    .hero-glitch { display: none; }
-    footer { flex-direction: column; text-align: center; }
-  }
-
-  /* TERMINAL TYPEWRITER */
-  .typewriter::after {
-    content: '_';
-    animation: blink 1s step-end infinite;
-    color: var(--green);
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-</style>
-</head>
-<body>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-brand"><span>SLIET</span> · LONGOWAL · EST. 2026</div>
-  <ul class="nav-links">
-    <li><a href="#what">WHAT WE DO</a></li>
-    <li><a href="#positions">POSITIONS</a></li>
-    <li><a href="#team">TEAM</a></li>
-    <li><a href="#join">JOIN</a></li>
-  </ul>
-  <div class="nav-dot">
-    <div class="dot"></div>
-    <div class="dot active"></div>
-    <div class="dot"></div>
-  </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#what" onclick="closeMobileMenu()">WHAT WE DO</a>
-  <a href="#positions" onclick="closeMobileMenu()">POSITIONS</a>
-  <a href="#team" onclick="closeMobileMenu()">TEAM</a>
-  <a href="#join" onclick="closeMobileMenu()">JOIN</a>
-</div>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-tag">
-    <div class="shield-icon">✓</div>
-    // SLIET PRESENTS
-  </div>
-  <h1 class="hero-title">
-    CYBER<br>
-    <span class="accent">CLUB</span>
-  </h1>
-  <p class="hero-tagline">"AWARE. SECURE. EMPOWERED."</p>
-  <div class="hero-divider"></div>
-  <p class="hero-desc">
-    SLIET's first dedicated <strong>cybersecurity club</strong> is now open for founding members. We build real skills — ethical hacking, CTF challenges, phishing demos, and network security — not just theory.
-  </p>
-  <div class="hero-cta">
-    <a href="#join" class="btn-primary">APPLY NOW →</a>
-    <a href="#what" class="btn-secondary">LEARN MORE</a>
-  </div>
-
-  <div class="hero-glitch">
-    <div>root@sliet:~$ <span class="hl">whoami</span></div>
-    <div>cyber_club_member</div>
-    <div class="hl">// initializing secure shell...</div>
-    <div>ssh -i club.key <span class="hl">sliet@longowal</span></div>
-    <div>connected. welcome back.</div>
-    <div class="hl">// dept_of_cse · 2026</div>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker-bar">
-  <div class="ticker-inner">
-    <div class="ticker-item">ETHICAL HACKING <span class="ti-val">// ACTIVE</span></div>
-    <div class="ticker-item">CTF COMPETITIONS <span class="ti-val">// WEEKLY</span></div>
-    <div class="ticker-item">KALI LINUX <span class="ti-val">// TOOLS</span></div>
-    <div class="ticker-item">NETWORK SECURITY <span class="ti-val">// TRAINING</span></div>
-    <div class="ticker-item">BUG BOUNTY <span class="ti-val">// PROGRAMS</span></div>
-    <div class="ticker-item">PHISHING AWARENESS <span class="ti-val">// DEMOS</span></div>
-    <div class="ticker-item">UPI SCAM DEMOS <span class="ti-val">// AWARENESS</span></div>
-    <!-- repeat for seamless loop -->
-    <div class="ticker-item">ETHICAL HACKING <span class="ti-val">// ACTIVE</span></div>
-    <div class="ticker-item">CTF COMPETITIONS <span class="ti-val">// WEEKLY</span></div>
-    <div class="ticker-item">KALI LINUX <span class="ti-val">// TOOLS</span></div>
-    <div class="ticker-item">NETWORK SECURITY <span class="ti-val">// TRAINING</span></div>
-    <div class="ticker-item">BUG BOUNTY <span class="ti-val">// PROGRAMS</span></div>
-    <div class="ticker-item">PHISHING AWARENESS <span class="ti-val">// DEMOS</span></div>
-    <div class="ticker-item">UPI SCAM DEMOS <span class="ti-val">// AWARENESS</span></div>
-  </div>
-</div>
-
-<!-- WHAT WE DO -->
-<section id="what">
-  <div class="section-label">// WHAT WE DO</div>
-  <div class="tags-grid reveal">
-    <span class="tag">Ethical hacking</span>
-    <span class="tag">CTF competitions</span>
-    <span class="tag">Kali Linux</span>
-    <span class="tag">Phishing awareness</span>
-    <span class="tag">Network security</span>
-    <span class="tag">Bug bounty</span>
-    <span class="tag">UPI scam demos</span>
-  </div>
-  <div class="what-cards reveal">
-    <div class="what-card">
-      <div class="what-card-icon">🛡</div>
-      <h3>REAL SKILLS</h3>
-      <p>Hands-on labs, live environments, and actual tools. No slides-only learning here.</p>
-    </div>
-    <div class="what-card">
-      <div class="what-card-icon">⚔</div>
-      <h3>CTF BATTLES</h3>
-      <p>Capture The Flag competitions — solo and team — to sharpen your offensive and defensive skills.</p>
-    </div>
-    <div class="what-card">
-      <div class="what-card-icon">🌐</div>
-      <h3>NETWORK OPS</h3>
-      <p>Learn packet analysis, firewall config, and network monitoring from the ground up.</p>
-    </div>
-    <div class="what-card">
-      <div class="what-card-icon">💰</div>
-      <h3>BUG BOUNTY</h3>
-      <p>Responsible disclosure programs and bug bounty prep — turn skills into real recognition.</p>
-    </div>
-  </div>
-</section>
-
-<!-- OPEN POSITIONS -->
-<section id="positions">
-  <div class="section-label">// OPEN POSITIONS</div>
-  <div class="positions-grid reveal">
-    <div class="position-card" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">
-      <div class="pos-bullet"></div>
-      <div class="pos-title">Vice President</div>
-      <div class="pos-arrow">→</div>
-    </div>
-    <div class="position-card" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">
-      <div class="pos-bullet"></div>
-      <div class="pos-title">Technical Head</div>
-      <div class="pos-arrow">→</div>
-    </div>
-    <div class="position-card" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">
-      <div class="pos-bullet"></div>
-      <div class="pos-title">Secretary</div>
-      <div class="pos-arrow">→</div>
-    </div>
-    <div class="position-card" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">
-      <div class="pos-bullet"></div>
-      <div class="pos-title">Social Media Manager</div>
-      <div class="pos-arrow">→</div>
-    </div>
-    <div class="position-card" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">
-      <div class="pos-bullet"></div>
-      <div class="pos-title">Design Head</div>
-      <div class="pos-arrow">→</div>
-    </div>
-    <div class="position-card" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">
-      <div class="pos-bullet"></div>
-      <div class="pos-title">Event Manager</div>
-      <div class="pos-arrow">→</div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section id="team">
-  <div class="section-label">// FOUNDING TEAM</div>
-  <div class="team-grid reveal">
-    <div class="team-card">
-      <div class="team-avatar">PK</div>
-      <div class="team-name">President</div>
-      <div class="team-role">CLUB LEAD</div>
-      <div class="team-branch">Dept. of CSE</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">VP</div>
-      <div class="team-name">Vice President</div>
-      <div class="team-role">POSITION OPEN</div>
-      <div class="team-branch">All Branches</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">TH</div>
-      <div class="team-name">Technical Head</div>
-      <div class="team-role">POSITION OPEN</div>
-      <div class="team-branch">All Branches</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">DH</div>
-      <div class="team-name">Design Head</div>
-      <div class="team-role">POSITION OPEN</div>
-      <div class="team-branch">All Branches</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">SM</div>
-      <div class="team-name">Social Media Mgr</div>
-      <div class="team-role">POSITION OPEN</div>
-      <div class="team-branch">All Branches</div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">EM</div>
-      <div class="team-name">Event Manager</div>
-      <div class="team-role">POSITION OPEN</div>
-      <div class="team-branch">All Branches</div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW TO JOIN -->
-<section id="join">
-  <div class="section-label">// HOW TO JOIN</div>
-  <div class="join-grid">
-    <div>
-      <ul class="join-steps">
-        <li class="join-step reveal">
-          <div class="step-num">01</div>
-          <div class="step-content">
-            <h4>SCAN QR OR FILL FORM</h4>
-            <p>Scan the QR code at any notice board or fill the membership form online.</p>
-          </div>
-        </li>
-        <li class="join-step reveal">
-          <div class="step-num">02</div>
-          <div class="step-content">
-            <h4>DM ON INSTAGRAM</h4>
-            <p>Reach us directly at <a href="https://instagram.com/yourhandle" target="_blank">@[Your Instagram handle]</a></p>
-          </div>
-        </li>
-        <li class="join-step reveal">
-          <div class="step-num">03</div>
-          <div class="step-content">
-            <h4>CALL OR WHATSAPP</h4>
-            <p>Contact: <strong style="color:var(--green)">[Your phone number]</strong></p>
-          </div>
-        </li>
-        <li class="join-step reveal">
-          <div class="step-num">04</div>
-          <div class="step-content">
-            <h4>OPEN TO ALL BRANCHES &amp; YEARS</h4>
-            <p>No prior experience needed. All students from all departments are welcome.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="reveal">
-      <div class="contact-box">
-        <h3>// SEND AN APPLICATION</h3>
-        <div class="form-group">
-          <label>FULL NAME</label>
-          <input type="text" id="fname" placeholder="Your name">
-        </div>
-        <div class="form-group">
-          <label>ROLL NUMBER</label>
-          <input type="text" id="froll" placeholder="e.g. 2301234">
-        </div>
-        <div class="form-group">
-          <label>BRANCH &amp; YEAR</label>
-          <select id="fbranch">
-            <option value="">Select...</option>
-            <option>CSE — 1st Year</option>
-            <option>CSE — 2nd Year</option>
-            <option>CSE — 3rd Year</option>
-            <option>ECE — 1st Year</option>
-            <option>ECE — 2nd Year</option>
-            <option>ECE — 3rd Year</option>
-            <option>ME — 1st Year</option>
-            <option>ME — 2nd Year</option>
-            <option>ME — 3rd Year</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>POSITION APPLYING FOR</label>
-          <select id="fposition">
-            <option value="">Select...</option>
-            <option>Vice President</option>
-            <option>Technical Head</option>
-            <option>Secretary</option>
-            <option>Social Media Manager</option>
-            <option>Design Head</option>
-            <option>Event Manager</option>
-            <option>General Member</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>WHY DO YOU WANT TO JOIN?</label>
-          <textarea id="fwhy" placeholder="Tell us your motivation..."></textarea>
-        </div>
-        <p class="form-note">// Open to ALL branches &amp; years · No experience required</p>
-        <button class="btn-primary" style="width:100%;justify-content:center;font-size:0.75rem;" onclick="submitForm()">SUBMIT APPLICATION →</button>
-        <div class="form-success" id="formSuccess">
-          ✓ APPLICATION RECEIVED. We'll reach out to you soon!
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">DEPT. OF CSE · <span class="fb-green">CYBER CLUB</span> · 2026</div>
-  <div class="footer-links">
-    <a href="#hero">HOME</a>
-    <a href="#what">ABOUT</a>
-    <a href="#positions">POSITIONS</a>
-    <a href="#join">JOIN</a>
-  </div>
-  <div class="footer-status">
-    <div class="status-dot"></div>
-    RECRUITING NOW
-  </div>
-</footer>
-
-<script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    setTimeout(() => {
-      ring.style.left = e.clientX + 'px';
-      ring.style.top = e.clientY + 'px';
-    }, 80);
-  });
-
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
-  function closeMobileMenu() { mobileMenu.classList.remove('open'); }
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
-
-  // Form submit
-  function submitForm() {
-    const name = document.getElementById('fname').value.trim();
-    const roll = document.getElementById('froll').value.trim();
-    const branch = document.getElementById('fbranch').value;
-    const position = document.getElementById('fposition').value;
-    if (!name || !roll || !branch || !position) {
-      alert('Please fill in all required fields.');
-      return;
-    }
-    document.getElementById('formSuccess').style.display = 'block';
-    document.getElementById('fname').value = '';
-    document.getElementById('froll').value = '';
-    document.getElementById('fbranch').value = '';
-    document.getElementById('fposition').value = '';
-    document.getElementById('fwhy').value = '';
-  }
-
-  // Active nav dots on scroll
-  const sections = document.querySelectorAll('section');
-  const dots = document.querySelectorAll('.dot');
-  window.addEventListener('scroll', () => {
-    let idx = 0;
-    sections.forEach((s, i) => {
-      if (window.scrollY >= s.offsetTop - 200) idx = Math.min(i, 2);
-    });
-    dots.forEach(d => d.classList.remove('active'));
-    dots[idx % dots.length].classList.add('active');
-  });
-</script>
-</body>
-</html>
+  .form-note { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); margin-bottom: 1.2rem; letter-spacing: 0.08em; }
+  .form-success { display: none; padding: 1rem; border: 1px solid var(--green); background: rgba(0,255,136,0.05); font-family: var(--mono); font-size: 0.75rem; color: var(--green); margin-top
